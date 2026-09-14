@@ -49,7 +49,7 @@ function render(config) {
     </div>
   </section>
 
-  <section class="section section--teal">
+  <section class="section section--indigo">
     <div class="container text-center">
       <h2>רוצים לקבוע תור עם הצוות שלנו?</h2>
       <div class="hero__ctas" style="justify-content:center;">

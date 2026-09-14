@@ -59,7 +59,7 @@ function render(config) {
     </div>
   </section>
 
-  <section class="section section--teal">
+  <section class="section section--indigo">
     <div class="container text-center">
       <h2>לקביעת תור לבדיקת שמיעה</h2>
       <div class="hero__ctas" style="justify-content:center;">

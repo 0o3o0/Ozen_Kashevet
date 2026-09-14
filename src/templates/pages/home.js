@@ -9,6 +9,119 @@ const description =
   "מכון בדיקות שמיעה בתל אביב למבוגרים ולילדים מגיל 5 — אודיומטריה וטימפנומטריה, תוצאות ודוח מסודר. קביעת תור בוואטסאפ או בטלפון.";
 const navLabel = "בית";
 
+function bookingSection(config) {
+  const digits = String(config.whatsappNumber || "").replace(/[^0-9]/g, "");
+  // Time slots within the confirmed opening hours (hourly, last slot
+  // an hour before closing so the appointment itself fits the day).
+  const timeSlots = ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"];
+  // English weekday names -> JS Date.getDay() indices, read from the
+  // same structured hours that feed the JSON-LD, so the live "closed
+  // day" check always matches what's actually published as open.
+  const dayIndex = { Sunday: 0, Monday: 1, Tuesday: 2, Wednesday: 3, Thursday: 4, Friday: 5, Saturday: 6 };
+  const openDays = (config.openingHoursStructured || []).flatMap((spec) => spec.days.map((d) => dayIndex[d]));
+
+  return `
+  <div class="card" style="max-width:760px;margin-inline:auto;">
+    <h3 class="mt-0">קביעת תור מהירה</h3>
+    <p style="margin-bottom:20px;">מלאו פרטים ובחרו תאריך ושעה מועדפים — הבקשה תישלח אליכם ישירות לוואטסאפ או למייל, לפי מה שנוח לכם.</p>
+    <form id="booking-form-live" data-track-form="home_booking">
+      <div class="grid grid--2">
+        <div class="form-field">
+          <label for="bk-name">שם מלא</label>
+          <input id="bk-name" name="name" type="text" required />
+        </div>
+        <div class="form-field">
+          <label for="bk-phone">טלפון</label>
+          <input id="bk-phone" name="phone" type="tel" required />
+        </div>
+      </div>
+      <div class="grid grid--2">
+        <div class="form-field">
+          <label for="bk-email">אימייל (לא חובה)</label>
+          <input id="bk-email" name="email" type="email" />
+        </div>
+        <div class="form-field">
+          <label for="bk-service">סוג הבדיקה</label>
+          <select id="bk-service" name="service">
+            <option>בדיקת שמיעה</option>
+            <option>בדיקת שמיעה לילדים</option>
+            <option>טימפנומטריה</option>
+            <option>בדיקה לוועדת זכאות ואפיון</option>
+            <option>אחר</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid grid--2">
+        <div class="form-field">
+          <label for="bk-date">תאריך מועדף</label>
+          <input id="bk-date" name="date" type="date" required />
+          <span id="bk-date-warning" style="display:none;color:#a33;font-size:.85rem;">המכון סגור בתאריך שנבחר (${config.openingHoursDisplay}). אפשר לשלוח בכל זאת ונתאם ידנית.</span>
+        </div>
+        <div class="form-field">
+          <label for="bk-time">שעה מועדפת</label>
+          <select id="bk-time" name="time">
+            ${timeSlots.map((t) => `<option>${t}</option>`).join("\n")}
+          </select>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="bk-notes">הערות (לא חובה)</label>
+        <textarea id="bk-notes" name="notes"></textarea>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
+        <button class="btn btn--primary" type="submit" data-channel="whatsapp" style="flex:1;min-width:200px;">${icons.whatsapp} שליחת הבקשה בוואטסאפ</button>
+        <button class="btn btn--ghost" type="submit" data-channel="email" style="flex:1;min-width:200px;">שליחת הבקשה במייל</button>
+      </div>
+      <p style="font-size:.8rem;color:var(--ink-faint);margin-top:14px;margin-bottom:0;">
+        לתשומת לב הצוות הטכני: הבקשה נשלחת כרגע ידנית (וואטסאפ/מייל) ואינה יוצרת הזמנה במערכת יומן. כשיחובר מנוע קביעת תורים אמיתי, ההגשה כאן צריכה לעבור ל-API שלו כדי שגם תישלח הודעת אישור אוטומטית ללקוח.
+      </p>
+    </form>
+  </div>
+
+  <script>
+    (function () {
+      var form = document.getElementById("booking-form-live");
+      if (!form) return;
+      var dateInput = document.getElementById("bk-date");
+      var dateWarning = document.getElementById("bk-date-warning");
+      var openDays = ${JSON.stringify(openDays)};
+      var today = new Date();
+      dateInput.min = today.toISOString().split("T")[0];
+
+      function checkDate() {
+        if (!dateInput.value) { dateWarning.style.display = "none"; return; }
+        var picked = new Date(dateInput.value + "T00:00:00");
+        var isOpen = openDays.indexOf(picked.getDay()) !== -1;
+        dateWarning.style.display = isOpen ? "none" : "block";
+      }
+      dateInput.addEventListener("change", checkDate);
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var channel = (e.submitter && e.submitter.dataset.channel) || "whatsapp";
+        var data = new FormData(form);
+        var lines = [
+          "בקשה לקביעת תור - ${config.clinicName}",
+          "שם: " + data.get("name"),
+          "טלפון: " + data.get("phone"),
+          data.get("email") ? "אימייל: " + data.get("email") : null,
+          "סוג בדיקה: " + data.get("service"),
+          "תאריך מועדף: " + data.get("date"),
+          "שעה מועדפת: " + data.get("time"),
+          data.get("notes") ? "הערות: " + data.get("notes") : null,
+        ].filter(Boolean).join("\\n");
+
+        if (channel === "email") {
+          var subject = encodeURIComponent("בקשה לקביעת תור - " + data.get("service"));
+          window.location.href = "mailto:${config.email}?subject=" + subject + "&body=" + encodeURIComponent(lines);
+        } else {
+          window.open("https://wa.me/${digits}?text=" + encodeURIComponent(lines), "_blank", "noopener");
+        }
+      });
+    })();
+  </script>`;
+}
+
 function servicesList(config) {
   const items = [
     {
@@ -75,7 +188,7 @@ function aboutAndLocation(config) {
       <div class="hero__ctas">
         <a class="btn btn--primary" href="${waHref(config)}" target="_blank" rel="noopener" data-track="whatsapp_click" data-track-location="home_about">${icons.whatsapp} קביעת תור בוואטסאפ</a>
       </div>
-      <!-- מיקום עתידי: כאן ייכנס ווידג'ט קביעת תור עצמאית (פיצ'ר בפיתוח) -->
+      <!-- ניתן להזין תור עצמאי ישירות למטה, או ליצור קשר בוואטסאפ/טלפון -->
     </div>
     <div>
       <div class="map-frame">
@@ -220,6 +333,14 @@ function render(config) {
     </div>
   </section>
 
+  <section class="section section--alt">
+    <div class="container">
+      <p class="eyebrow">${icons.document} קביעת תור</p>
+      <h2 class="text-center" style="max-width:600px;margin-inline:auto;">קבעו תור עצמאית, ישירות באתר</h2>
+      ${bookingSection(config)}
+    </div>
+  </section>
+
   <section class="section">
     <div class="container">
       <p class="eyebrow">השירותים שלנו</p>
@@ -247,7 +368,7 @@ function render(config) {
     </div>
   </section>
 
-  <section class="section section--teal">
+  <section class="section section--indigo">
     <div class="container text-center">
       <h2>מוכנים לקבוע תור?</h2>
       <p class="lede">כתבו לנו בוואטסאפ או התקשרו — נשמח לתאם זמן שנוח לכם.</p>

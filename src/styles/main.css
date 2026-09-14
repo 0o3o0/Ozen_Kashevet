@@ -364,6 +364,26 @@ p { margin: 0 0 1em; color: var(--ink-soft); max-width: 62ch; }
 .faq-item[open] summary::after { content: "–"; }
 .faq-item p { padding-bottom: 18px; margin: 0; }
 
+.faq-section > summary.faq-section__summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.faq-section > summary.faq-section__summary::-webkit-details-marker { display: none; }
+.faq-section > summary.faq-section__summary::after {
+  content: "+";
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--indigo);
+  flex: none;
+}
+.faq-section[open] > summary.faq-section__summary::after { content: "–"; }
+.faq-section__body { margin-top: 20px; max-width: 760px; }
+
 /* ==========================================================
    Breadcrumbs
    ========================================================== */
@@ -394,17 +414,22 @@ p { margin: 0 0 1em; color: var(--ink-soft); max-width: 62ch; }
 .info-list li { display: flex; gap: 12px; }
 .info-list svg { width: 22px; height: 22px; color: var(--indigo); flex: none; margin-top: 2px; }
 
-.form-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
-.form-field label { font-size: .92rem; font-weight: 600; }
+.form-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+.form-field label { font-size: .85rem; font-weight: 600; color: var(--ink-soft); }
 .form-field input, .form-field select, .form-field textarea {
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius-s);
-  padding: 12px 14px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-m);
+  padding: 12px 16px;
   font: inherit;
-  background: var(--surface);
+  background: var(--bg-alt);
   color: var(--ink);
+  transition: border-color .15s ease, background .15s ease;
 }
-.form-field textarea { resize: vertical; min-height: 100px; }
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+  background: var(--surface);
+  border-color: var(--indigo);
+}
+.form-field textarea { resize: vertical; min-height: 90px; }
 
 /* ==========================================================
    Footer

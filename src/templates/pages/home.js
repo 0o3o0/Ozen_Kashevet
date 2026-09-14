@@ -68,9 +68,9 @@ function bookingSection(config) {
         <label for="bk-notes">הערות (לא חובה)</label>
         <textarea id="bk-notes" name="notes"></textarea>
       </div>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
-        <button class="btn btn--primary" type="submit" data-channel="whatsapp" style="flex:1;min-width:200px;">${icons.whatsapp} שליחת הבקשה בוואטסאפ</button>
-        <button class="btn btn--ghost" type="submit" data-channel="email" style="flex:1;min-width:200px;">שליחת הבקשה במייל</button>
+      <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:12px;">
+        <button class="btn btn--primary" type="submit" data-channel="whatsapp">${icons.whatsapp} שליחת הבקשה בוואטסאפ</button>
+        <button type="submit" data-channel="email" style="background:none;border:none;color:var(--indigo-dark);font-weight:600;cursor:pointer;text-decoration:underline;padding:8px;">שליחה במייל במקום</button>
       </div>
       <p style="font-size:.8rem;color:var(--ink-faint);margin-top:14px;margin-bottom:0;">
         לתשומת לב הצוות הטכני: הבקשה נשלחת כרגע ידנית (וואטסאפ/מייל) ואינה יוצרת הזמנה במערכת יומן. כשיחובר מנוע קביעת תורים אמיתי, ההגשה כאן צריכה לעבור ל-API שלו כדי שגם תישלח הודעת אישור אוטומטית ללקוח.
@@ -382,10 +382,12 @@ function render(config) {
   <section class="section section--alt">
     <div class="container">
       <p class="eyebrow">שאלות נפוצות</p>
-      <h2>שאלות ותשובות</h2>
-      <div style="max-width:760px;margin-top:16px;">
-        ${faqItems(config)}
-      </div>
+      <details class="faq-section">
+        <summary class="faq-section__summary"><h2 class="mt-0" style="margin-bottom:0;">שאלות ותשובות</h2></summary>
+        <div class="faq-section__body">
+          ${faqItems(config)}
+        </div>
+      </details>
     </div>
   </section>
   `;

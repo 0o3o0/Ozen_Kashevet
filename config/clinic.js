@@ -58,6 +58,27 @@ module.exports = {
     "המכון פועל בהתאם לדרישות הנגישות החוקיות. פרטים מלאים על נגישות הכניסה, חניית נכים והתאמות במקום יעודכנו כאן.",
   accessibilityConfirmed: false, // flip to true once the specific accessibility features above are verified on-site
 
+  // Digital (website) accessibility statement — required by Israeli
+  // disability-rights regulations (תקנות נגישות לשירות, תשע"ג-2013).
+  // A self-review is not a substitute for a certified audit — keep
+  // `audited: false` until an accredited accessibility auditor
+  // (בודק נגישות מוסמך) has actually signed off on the site.
+  accessibilityStatement: {
+    coordinatorName: "[ACCESSIBILITY_COORDINATOR_NAME]",
+    coordinatorPhone: "[ACCESSIBILITY_COORDINATOR_PHONE]",
+    coordinatorEmail: "[ACCESSIBILITY_COORDINATOR_EMAIL]",
+    lastReviewedDate: "[ACCESSIBILITY_LAST_REVIEWED_DATE]",
+    audited: false,
+    auditorName: "[ACCESSIBILITY_AUDITOR_NAME]",
+    auditDate: "[ACCESSIBILITY_AUDIT_DATE]",
+  },
+
+  // ---- Privacy policy -------------------------------------------------
+  privacyPolicy: {
+    businessId: "[BUSINESS_ID]", // ח.פ / עוסק מורשה מספר
+    lastUpdatedDate: "[PRIVACY_POLICY_LAST_UPDATED]",
+  },
+
   // ---- Hours -------------------------------------------------
   // Free-text fallback shown until real hours are confirmed.
   openingHoursDisplay: "[OPENING_HOURS]",

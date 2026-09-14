@@ -81,6 +81,10 @@ function footer(config, pages) {
       </div>
     </div>
     <div class="container footer-bottom">
+      <div style="margin-bottom:10px;display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="/accessibility-statement/">הצהרת נגישות</a>
+        <a href="/privacy-policy/">מדיניות פרטיות</a>
+      </div>
       © ${year} ${config.clinicName}. כל הזכויות שמורות. תוכן האתר אינו מהווה ייעוץ רפואי ואינו מחליף בדיקה וייעוץ אצל איש מקצוע מוסמך.
     </div>
   </footer>`;

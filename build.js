@@ -15,6 +15,8 @@ const ent = require("./src/templates/pages/ent");
 const team = require("./src/templates/pages/team");
 const prices = require("./src/templates/pages/prices");
 const contact = require("./src/templates/pages/contact");
+const accessibilityStatement = require("./src/templates/pages/accessibilityStatement");
+const privacyPolicy = require("./src/templates/pages/privacyPolicy");
 
 const DIST = path.join(__dirname, "dist");
 
@@ -23,7 +25,7 @@ function isPlaceholder(v) {
 }
 
 // ---- Assemble the page list (ENT only when enabled) --------------------
-const pages = [home, hearingTest, childrenHearingTest, tympanometry, specialEducation, team, prices, contact];
+const pages = [home, hearingTest, childrenHearingTest, tympanometry, specialEducation, team, prices, contact, accessibilityStatement, privacyPolicy];
 if (config.entEnabled) pages.splice(5, 0, ent);
 
 // ---- JSON-LD: MedicalClinic / LocalBusiness (home page only) -----------

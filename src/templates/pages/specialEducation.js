@@ -5,7 +5,7 @@ const slug = "special-education";
 const path = "/special-education-hearing-test/";
 const title = "בדיקת שמיעה לוועדת זכאות ואפיון";
 const description =
-  "בדיקת שמיעה ביבנה עם דוח כתוב, לצורך הצגה כחלק מתהליך מול ועדת זכאות ואפיון בחינוך המיוחד.";
+  "בדיקת שמיעה בתל אביב עם דוח כתוב, לצורך הצגה כחלק מתהליך מול ועדת זכאות ואפיון בחינוך המיוחד.";
 const navLabel = "ועדת זכאות ואפיון";
 
 function render(config) {

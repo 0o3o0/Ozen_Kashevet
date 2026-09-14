@@ -5,7 +5,7 @@ const slug = "contact";
 const path = "/contact/";
 const title = "צור קשר והגעה";
 const description =
-  "פרטי יצירת קשר, כתובת, הגעה בתחבורה ציבורית, חניה ונגישות למכון [CLINIC_NAME] ביבנה.";
+  "פרטי יצירת קשר, כתובת, הגעה בתחבורה ציבורית, חניה ונגישות למכון אוזן קשבת בתל אביב.";
 const navLabel = "צור קשר";
 
 function isPlaceholder(v) {
@@ -13,8 +13,16 @@ function isPlaceholder(v) {
 }
 
 function render(config) {
+  const hasGeo = typeof config.geo.lat === "number" && typeof config.geo.lng === "number";
   const addressKnown = !isPlaceholder(config.address.full);
-  const mapQuery = encodeURIComponent(config.address.full + " " + config.address.city);
+  const showMap = hasGeo || addressKnown;
+  // Prefer exact coordinates once known; fall back to a text-address
+  // search embed, which is what will happen once a real street
+  // address is confirmed but before precise geo is measured.
+  const mapQuery = hasGeo
+    ? encodeURIComponent(`${config.geo.lat},${config.geo.lng}`)
+    : encodeURIComponent(config.address.full + " " + config.address.city);
+  const mapZoom = hasGeo ? "15" : "16";
 
   return `
   <section class="section" style="padding-top:24px;">
@@ -34,7 +42,7 @@ function render(config) {
           <li>${icons.phone} <a href="${telHref(config)}" data-track="phone_click" data-track-location="contact_page">${config.phoneDisplay}</a></li>
           <li>${icons.whatsapp} <a href="${waHref(config)}" target="_blank" rel="noopener" data-track="whatsapp_click" data-track-location="contact_page">שלחו הודעת וואטסאפ</a></li>
           <li>${icons.clock} <span>${config.openingHoursDisplay}</span></li>
-          <li>${icons.bus} <span>מרחק מתחנת רכבת יבנה מערב: ${config.distanceFromYavneWestStation}</span></li>
+          <li>${icons.bus} <span>מרחק מהתחנה הקרובה: ${config.distanceFromTrainStation}</span></li>
           <li>${icons.parking} <span>${config.parkingInfo}</span></li>
           <li>${icons.accessibility} <span>${config.accessibilityConfirmed ? config.accessibilityInfo : "פרטי הנגישות המלאים מתעדכנים כעת."}</span></li>
         </ul>
@@ -47,11 +55,16 @@ function render(config) {
       <div>
         <div class="map-frame">
           ${
-            addressKnown
-              ? `<iframe title="מפת הגעה למכון" loading="lazy" src="https://www.google.com/maps?q=${mapQuery}&output=embed"></iframe>`
+            showMap
+              ? `<iframe title="מפת הגעה למכון" loading="lazy" src="https://www.google.com/maps?q=${mapQuery}&z=${mapZoom}&output=embed"></iframe>`
               : `<div style="display:flex;align-items:center;justify-content:center;height:100%;padding:24px;text-align:center;color:var(--ink-faint);">המפה תוצג לאחר אימות הכתובת המדויקת</div>`
           }
         </div>
+        ${
+          hasGeo && !addressKnown
+            ? `<div style="padding-top:8px;font-size:.8rem;color:var(--ink-faint);">מיקום זמני להדגמה בלב תל אביב — יעודכן לכתובת המדויקת של המכון.</div>`
+            : ""
+        }
         <a class="btn btn--ghost btn--sm" style="margin-top:12px;" href="https://www.google.com/maps/search/?api=1&query=${mapQuery}" target="_blank" rel="noopener" data-track="directions_click" data-track-location="contact_page">${icons.pin} ניווט בגוגל מפות</a>
       </div>
     </div>

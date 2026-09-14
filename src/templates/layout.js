@@ -85,7 +85,7 @@ function footer(config, pages) {
         <a href="/accessibility-statement/">הצהרת נגישות</a>
         <a href="/privacy-policy/">מדיניות פרטיות</a>
       </div>
-      © ${year} ${config.clinicName}. כל הזכויות שמורות. תוכן האתר אינו מהווה ייעוץ רפואי ואינו מחליף בדיקה וייעוץ אצל איש מקצוע מוסמך.
+      © ${year} ${config.legalName}. כל הזכויות שמורות. תוכן האתר אינו מהווה ייעוץ רפואי ואינו מחליף בדיקה וייעוץ אצל איש מקצוע מוסמך.
     </div>
   </footer>`;
 }
@@ -163,7 +163,7 @@ function renderPage(config, pages, page, { contentHtml, jsonLd = [], breadcrumbs
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;600;700&family=Assistant:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/main.css" />
 
   ${jsonLd.map(jsonLdScript).join("\n")}

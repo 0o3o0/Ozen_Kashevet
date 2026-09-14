@@ -33,7 +33,8 @@ function organizationLd() {
   const ld = {
     "@context": "https://schema.org",
     "@type": ["MedicalClinic", "LocalBusiness"],
-    name: config.clinicName,
+    name: config.legalName,
+    alternateName: config.clinicName,
     url: config.siteUrl,
   };
   if (!isPlaceholder(config.logo)) ld.logo = absUrl(config, config.logo);
@@ -68,9 +69,9 @@ function organizationLd() {
   if (!isPlaceholder(config.socialImage)) ld.image = absUrl(config, config.socialImage);
 
   const services = [
-    { name: "בדיקת שמיעה", url: "/hearing-test-yavne/" },
-    { name: "בדיקת שמיעה לילדים", url: "/children-hearing-test-yavne/" },
-    { name: "טימפנומטריה", url: "/tympanometry-yavne/" },
+    { name: "בדיקת שמיעה", url: "/hearing-test/" },
+    { name: "בדיקת שמיעה לילדים", url: "/children-hearing-test/" },
+    { name: "טימפנומטריה", url: "/tympanometry/" },
     { name: "בדיקה לוועדת זכאות ואפיון", url: "/special-education-hearing-test/" },
   ];
   ld.availableService = services.map((s) => ({

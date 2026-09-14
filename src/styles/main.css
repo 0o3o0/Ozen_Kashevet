@@ -17,8 +17,13 @@
   --gold-tint: #f6ecd8;
   --focus: #0b5cff;
 
-  --font-display: "Frank Ruhl Libre", "David Libre", serif;
-  --font-body: "Assistant", "Arial Hebrew", sans-serif;
+  /* Calibri per client request. It's a Microsoft font with no free
+     web-embeddable source (not on Google Fonts), so it only renders
+     where the OS actually has it installed (reliable on Windows,
+     inconsistent on macOS/iOS/Android/Linux). "Assistant" is kept as
+     the fallback so Hebrew still renders cleanly everywhere else. */
+  --font-display: "Calibri", "Assistant", "Arial Hebrew", sans-serif;
+  --font-body: "Calibri", "Assistant", "Arial Hebrew", sans-serif;
 
   --radius-s: 6px;
   --radius-m: 12px;

@@ -4,7 +4,7 @@ const { waHref, telHref } = require("../utils");
 const slug = "prices";
 const path = "/prices/";
 const title = "מחירון";
-const description = "מחירי בדיקת שמיעה וטימפנומטריה במכון [CLINIC_NAME] ביבנה.";
+const description = "מחירי בדיקת שמיעה וטימפנומטריה במכון אוזן קשבת בתל אביב.";
 const navLabel = "מחירים";
 
 function render(config) {

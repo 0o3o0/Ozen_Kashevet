@@ -2,10 +2,10 @@ const icons = require("../icons");
 const { waHref, telHref } = require("../utils");
 
 const slug = "tympanometry";
-const path = "/tympanometry-yavne/";
-const title = "טימפנומטריה ביבנה";
+const path = "/tympanometry/";
+const title = "טימפנומטריה בתל אביב";
 const description =
-  "בדיקת טימפנומטריה ביבנה — בדיקת תפקוד האוזן התיכונה ועור התוף, לבד או בשילוב עם בדיקת שמיעה.";
+  "בדיקת טימפנומטריה בתל אביב — בדיקת תפקוד האוזן התיכונה ועור התוף, לבד או בשילוב עם בדיקת שמיעה.";
 const navLabel = "טימפנומטריה";
 
 function render(config) {
@@ -13,7 +13,7 @@ function render(config) {
   <section class="section" style="padding-top:24px;">
     <div class="container">
       <p class="eyebrow">${icons.tympanometry} טימפנומטריה</p>
-      <h1>טימפנומטריה ביבנה</h1>
+      <h1>טימפנומטריה בתל אביב</h1>
       <p class="lede">בדיקת טימפנומטריה בוחנת את תפקוד האוזן התיכונה ועור התוף, ומבוצעת לבד או בשילוב עם בדיקת שמיעה.</p>
       <div class="hero__ctas">
         <a class="btn btn--primary" href="${waHref(config)}" target="_blank" rel="noopener" data-track="whatsapp_click" data-track-location="tympanometry_page">${icons.whatsapp} קביעת תור בוואטסאפ</a>

@@ -24,11 +24,16 @@ module.exports = {
   siteUrl: "https://www.[CLINIC_DOMAIN].co.il",
 
   // ---- Identity -------------------------------------------------
-  clinicName: "[CLINIC_NAME]",
-  shortName: "[CLINIC_NAME]",
-  tagline: "בדיקות שמיעה מקצועיות ביבנה",
+  // clinicName = the brand, used everywhere on the site (header, hero, CTAs).
+  // legalName = the registered/business name, used in formal contexts
+  // (footer copyright, privacy policy, JSON-LD "name") — schema.org's
+  // "alternateName" is set to clinicName automatically in build.js.
+  clinicName: "אוזן קשבת",
+  shortName: "אוזן קשבת",
+  legalName: "מכון שמיעה - אוזן קשבת",
+  tagline: "בדיקות שמיעה מקצועיות בתל אביב",
   description:
-    "מכון בדיקות שמיעה ביבנה למבוגרים ולילדים מגיל 5 — אודיומטריה וטימפנומטריה על ידי קלינאי/ות תקשורת מוסמכים.",
+    "מכון בדיקות שמיעה בתל אביב למבוגרים ולילדים מגיל 5 — אודיומטריה וטימפנומטריה על ידי קלינאי/ות תקשורת מוסמכים.",
 
   // ---- Contact -------------------------------------------------
   phoneDisplay: "[PHONE]", // e.g. 08-1234567 — shown to visitors
@@ -39,20 +44,21 @@ module.exports = {
 
   // ---- Location -------------------------------------------------
   address: {
-    full: "[ADDRESS]", // e.g. "רחוב הרצל 12, יבנה"
+    full: "[ADDRESS]", // e.g. "רחוב דיזנגוף 99, תל אביב"
     street: "[ADDRESS]",
-    city: "יבנה",
+    city: "תל אביב",
     postalCode: "[POSTAL_CODE]",
     country: "IL",
   },
-  // Leave lat/lng as null until confirmed. When both are numbers,
-  // the build will add a "geo" field to the JSON-LD and can be
-  // used to embed an accurate map pin.
+  // Demo pin only — center of Tel Aviv, used so the map on /contact/
+  // has something real to show before a confirmed street address
+  // exists. Replace with the clinic's actual coordinates once known
+  // (the map and JSON-LD both read from here automatically).
   geo: {
-    lat: null,
-    lng: null,
+    lat: 32.0853,
+    lng: 34.7818,
   },
-  distanceFromYavneWestStation: "[DISTANCE_FROM_YAVNE_WEST_STATION]",
+  distanceFromTrainStation: "[DISTANCE_FROM_TRAIN_STATION]",
   parkingInfo: "[PARKING_INFO]",
   accessibilityInfo:
     "המכון פועל בהתאם לדרישות הנגישות החוקיות. פרטים מלאים על נגישות הכניסה, חניית נכים והתאמות במקום יעודכנו כאן.",
@@ -114,7 +120,7 @@ module.exports = {
 
   // ---- ENT physician -------------------------------------------------
   // Keep entEnabled=false until a real ENT physician is actually
-  // seeing patients at this clinic. When false, /ent-yavne is not
+  // seeing patients at this clinic. When false, /ent is not
   // built at all and no service card links to it.
   entEnabled: false,
   entDoctor: {

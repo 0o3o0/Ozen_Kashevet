@@ -2,10 +2,10 @@ const icons = require("../icons");
 const { waHref, telHref } = require("../utils");
 
 const slug = "children-hearing-test";
-const path = "/children-hearing-test-yavne/";
-const title = "בדיקת שמיעה לילדים ביבנה";
+const path = "/children-hearing-test/";
+const title = "בדיקת שמיעה לילדים בתל אביב";
 const description =
-  "בדיקת שמיעה לילדים מגיל 5 ביבנה, בסביבה נעימה ורגועה — אודיומטריה וטימפנומטריה, עם הסבר להורים בתום הבדיקה.";
+  "בדיקת שמיעה לילדים מגיל 5 בתל אביב, בסביבה נעימה ורגועה — אודיומטריה וטימפנומטריה, עם הסבר להורים בתום הבדיקה.";
 const navLabel = "בדיקה לילדים";
 
 function render(config) {
@@ -13,7 +13,7 @@ function render(config) {
   <section class="section" style="padding-top:24px;">
     <div class="container">
       <p class="eyebrow">${icons.child} לילדים מגיל 5</p>
-      <h1>בדיקת שמיעה לילדים ביבנה</h1>
+      <h1>בדיקת שמיעה לילדים בתל אביב</h1>
       <p class="lede">בדיקות שמיעה לילדים מגיל 5, בסביבה נעימה ורגועה, עם הסבר מסודר להורים בתום התהליך.</p>
       <div class="hero__ctas">
         <a class="btn btn--primary" href="${waHref(config)}" target="_blank" rel="noopener" data-track="whatsapp_click" data-track-location="children_page">${icons.whatsapp} קביעת תור בוואטסאפ</a>

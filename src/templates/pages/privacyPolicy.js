@@ -3,7 +3,7 @@ const icons = require("../icons");
 const slug = "privacy-policy";
 const path = "/privacy-policy/";
 const title = "מדיניות פרטיות";
-const description = "מדיניות הפרטיות של מכון [CLINIC_NAME] ביבנה — אילו פרטים נאספים באתר וכיצד נעשה בהם שימוש.";
+const description = "מדיניות הפרטיות של מכון אוזן קשבת בתל אביב — אילו פרטים נאספים באתר וכיצד נעשה בהם שימוש.";
 const navLabel = "מדיניות פרטיות";
 const inNav = false; // footer-only link
 
@@ -18,7 +18,7 @@ function render(config) {
     <div class="container">
       <p class="eyebrow">${icons.document} פרטיות</p>
       <h1>מדיניות פרטיות</h1>
-      <p class="lede">מדיניות זו מסבירה אילו פרטים מכון ${config.clinicName} (${config.privacyPolicy.businessId}) אוסף באתר, לשם מה, וכיצד ניתן לפנות בנושא.</p>
+      <p class="lede">מדיניות זו מסבירה אילו פרטים ${config.legalName} (${config.privacyPolicy.businessId}) אוסף באתר, לשם מה, וכיצד ניתן לפנות בנושא.</p>
     </div>
   </section>
 

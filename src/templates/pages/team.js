@@ -4,7 +4,7 @@ const { waHref, telHref } = require("../utils");
 const slug = "team";
 const path = "/team/";
 const title = "הצוות המקצועי";
-const description = "הצוות המקצועי של מכון [CLINIC_NAME] — קלינאי/ות תקשורת מוסמכ/ות ביבנה.";
+const description = "הצוות המקצועי של מכון אוזן קשבת — קלינאי/ות תקשורת מוסמכ/ות בתל אביב.";
 const navLabel = "הצוות";
 
 function clinicianCard(c) {

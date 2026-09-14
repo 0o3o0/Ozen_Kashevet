@@ -2,10 +2,10 @@ const icons = require("../icons");
 const { waHref, telHref } = require("../utils");
 
 const slug = "hearing-test";
-const path = "/hearing-test-yavne/";
-const title = "בדיקת שמיעה ביבנה";
+const path = "/hearing-test/";
+const title = "בדיקת שמיעה בתל אביב";
 const description =
-  "בדיקת שמיעה פרטית ביבנה למבוגרים — אודיומטריה על ידי קלינאי/ת תקשורת מוסמכ/ת, תוצאות והסבר בתום הבדיקה.";
+  "בדיקת שמיעה פרטית בתל אביב למבוגרים — אודיומטריה על ידי קלינאי/ת תקשורת מוסמכ/ת, תוצאות והסבר בתום הבדיקה.";
 const navLabel = "בדיקת שמיעה";
 
 function render(config) {
@@ -13,8 +13,8 @@ function render(config) {
   <section class="section" style="padding-top:24px;">
     <div class="container">
       <p class="eyebrow">${icons.ear} בדיקת שמיעה</p>
-      <h1>בדיקת שמיעה ביבנה</h1>
-      <p class="lede">מכון ${config.clinicName} מבצע בדיקות שמיעה ביבנה למבוגרים, הכוללות אודיומטריה ובחינת תפקוד השמיעה.</p>
+      <h1>בדיקת שמיעה בתל אביב</h1>
+      <p class="lede">מכון ${config.clinicName} מבצע בדיקות שמיעה בתל אביב למבוגרים, הכוללות אודיומטריה ובחינת תפקוד השמיעה.</p>
       <div class="hero__ctas">
         <a class="btn btn--primary" href="${waHref(config)}" target="_blank" rel="noopener" data-track="whatsapp_click" data-track-location="hearing_test_page">${icons.whatsapp} קביעת תור בוואטסאפ</a>
         <a class="btn btn--ghost" href="${telHref(config)}" data-track="phone_click" data-track-location="hearing_test_page">${icons.phone} התקשרו עכשיו</a>

@@ -3,7 +3,7 @@ const icons = require("../icons");
 const slug = "accessibility-statement";
 const path = "/accessibility-statement/";
 const title = "הצהרת נגישות";
-const description = "הצהרת נגישות לאתר ולמכון [CLINIC_NAME] ביבנה, בהתאם לתקנות שוויון זכויות לאנשים עם מוגבלות.";
+const description = "הצהרת נגישות לאתר ולמכון אוזן קשבת בתל אביב, בהתאם לתקנות שוויון זכויות לאנשים עם מוגבלות.";
 const navLabel = "הצהרת נגישות";
 const inNav = false; // footer-only link, not in the primary header nav
 

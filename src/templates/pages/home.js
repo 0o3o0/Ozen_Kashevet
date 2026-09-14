@@ -4,9 +4,9 @@ const { heroWave } = require("../layout");
 
 const slug = "home";
 const path = "/";
-const title = "בדיקות שמיעה ביבנה";
+const title = "בדיקות שמיעה בתל אביב";
 const description =
-  "מכון בדיקות שמיעה ביבנה למבוגרים ולילדים מגיל 5 — אודיומטריה וטימפנומטריה, תוצאות ודוח מסודר. קביעת תור בוואטסאפ או בטלפון.";
+  "מכון בדיקות שמיעה בתל אביב למבוגרים ולילדים מגיל 5 — אודיומטריה וטימפנומטריה, תוצאות ודוח מסודר. קביעת תור בוואטסאפ או בטלפון.";
 const navLabel = "בית";
 
 function servicesList(config) {
@@ -15,19 +15,19 @@ function servicesList(config) {
       icon: icons.ear,
       title: "בדיקת שמיעה",
       text: "בדיקת שמיעה מקיפה למבוגרים, הכוללת אודיומטריה ובחינת תפקוד השמיעה.",
-      link: "/hearing-test-yavne/",
+      link: "/hearing-test/",
     },
     {
       icon: icons.child,
       title: "בדיקת שמיעה לילדים מגיל 5",
       text: "בדיקה מותאמת לילדים, בסביבה נעימה ורגועה, עם הסבר להורים בתום התהליך.",
-      link: "/children-hearing-test-yavne/",
+      link: "/children-hearing-test/",
     },
     {
       icon: icons.tympanometry,
       title: "טימפנומטריה",
       text: "בדיקת תפקוד האוזן התיכונה ועור התוף, בשילוב עם בדיקת השמיעה או בנפרד.",
-      link: "/tympanometry-yavne/",
+      link: "/tympanometry/",
     },
     {
       icon: icons.document,
@@ -41,7 +41,7 @@ function servicesList(config) {
       icon: icons.ear,
       title: "רפואת אא\"ג",
       text: "ייעוץ וטיפול אצל רופא/ת אא\"ג הפועל/ת במכון.",
-      link: "/ent-yavne/",
+      link: "/ent/",
     });
   }
   return items
@@ -70,7 +70,7 @@ function trustBar(config) {
 function howItWorks() {
   const steps = [
     { n: 1, t: "קובעים תור", d: "בוואטסאפ או בטלפון, בזמן שנוח לכם." },
-    { n: 2, t: "מגיעים למכון", d: `${"[ADDRESS]"} ביבנה, נגיש ופשוט להגעה.` },
+    { n: 2, t: "מגיעים למכון", d: `${"[ADDRESS]"} בתל אביב, נגיש ופשוט להגעה.` },
     { n: 3, t: "מבצעים את הבדיקה", d: "קלינאי/ת תקשורת מבצע/ת את הבדיקה בציוד אודיולוגי קליני." },
     { n: 4, t: "מקבלים תוצאות והסבר", d: "הסבר ברור על הממצאים, בתום הבדיקה." },
   ];
@@ -101,7 +101,7 @@ function childrenSection() {
         <li>תוצאות בכתב עם הסבר להורים</li>
       </ul>
       <p>תהליכי ועדות זכאות ואפיון שונים זה מזה, ולא כל ועדה דורשת את אותם המסמכים — מומלץ לבדוק מראש מול הגורם הרלוונטי אילו מסמכים נדרשים במקרה הספציפי.</p>
-      <a class="btn btn--primary" href="/children-hearing-test-yavne/">בדיקת שמיעה לילדים</a>
+      <a class="btn btn--primary" href="/children-hearing-test/">בדיקת שמיעה לילדים</a>
     </div>
     <div class="card">
       <h3 class="mt-0">מה כוללת הבדיקה?</h3>
@@ -151,7 +151,7 @@ function faqItems(config) {
     },
     {
       q: "איך מגיעים בתחבורה ציבורית?",
-      a: `פרטי תחבורה ציבורית ומרחק מתחנת הרכבת יבנה מערב: ${config.distanceFromYavneWestStation}. פרטים מלאים בעמוד "צור קשר".`,
+      a: `פרטי תחבורה ציבורית ומרחק מהתחנה הקרובה: ${config.distanceFromTrainStation}. פרטים מלאים בעמוד "צור קשר".`,
     },
   ];
   return items
@@ -170,8 +170,8 @@ function render(config) {
   <section class="hero">
     <div class="container hero__grid">
       <div>
-        <p class="eyebrow">${icons.pin} בדיקות שמיעה ביבנה</p>
-        <h1>בדיקות שמיעה ביבנה</h1>
+        <p class="eyebrow">${icons.pin} בדיקות שמיעה בתל אביב</p>
+        <h1>בדיקות שמיעה בתל אביב</h1>
         <p class="lede">בדיקות שמיעה למבוגרים ולילדים מגיל 5, כולל אודיומטריה וטימפנומטריה.</p>
         <div class="hero__ctas">
           <a class="btn btn--primary" href="${waHref(config)}" target="_blank" rel="noopener" data-track="whatsapp_click" data-track-location="hero">${icons.whatsapp} קביעת תור בוואטסאפ</a>
@@ -186,8 +186,8 @@ function render(config) {
   <section class="section">
     <div class="container">
       <p class="eyebrow">השירותים שלנו</p>
-      <h2>בדיקות שמיעה וטימפנומטריה ביבנה</h2>
-      <p class="lede">מכון ${config.clinicName} מבצע בדיקות שמיעה ביבנה למבוגרים ולילדים מגיל 5.</p>
+      <h2>בדיקות שמיעה וטימפנומטריה בתל אביב</h2>
+      <p class="lede">מכון ${config.clinicName} מבצע בדיקות שמיעה בתל אביב למבוגרים ולילדים מגיל 5.</p>
       <div class="grid grid--4" style="margin-top:28px;">
         ${servicesList(config)}
       </div>

@@ -29,7 +29,7 @@ function header(config, pages, currentSlug) {
   <header class="site-header">
     <div class="site-header__bar">
       <a class="brand" href="/">
-        <span class="brand__mark">${icons.waveform}</span>
+        <span class="brand__mark">${icons.handsEar}</span>
         <span class="brand__name">${config.clinicName}</span>
       </a>
       <nav class="site-nav" aria-label="ניווט ראשי">

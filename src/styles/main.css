@@ -112,7 +112,7 @@ p { margin: 0 0 1em; color: var(--ink-soft); max-width: 62ch; }
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
-.section { padding-block: clamp(48px, 7vw, 96px); }
+.section { padding-block: clamp(32px, 4.5vw, 64px); }
 .section--alt { background: var(--bg-alt); }
 .section--teal { background: var(--teal); color: #fff; }
 .section--teal h2, .section--teal h3 { color: #fff; }
@@ -225,7 +225,7 @@ p { margin: 0 0 1em; color: var(--ink-soft); max-width: 62ch; }
 .hero {
   position: relative;
   overflow: hidden;
-  padding-block: clamp(48px, 8vw, 108px);
+  padding-block: clamp(32px, 5vw, 72px);
   background-image:
     linear-gradient(var(--bg) 0%, var(--bg) 100%),
     repeating-linear-gradient(0deg, var(--line) 0 1px, transparent 1px 44px);

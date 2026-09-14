@@ -41,28 +41,16 @@ module.exports = {
   ),
   quote: base(`<path d="M7 8.5c-2 1-3 2.6-3 4.7 0 1.8 1.2 3 2.8 3s2.7-1.1 2.7-2.7c0-1.4-.9-2.4-2.2-2.6.2-1.4 1.3-2.5 2.7-3.1L7 8.5Zm9 0c-2 1-3 2.6-3 4.7 0 1.8 1.2 3 2.8 3s2.7-1.1 2.7-2.7c0-1.4-.9-2.4-2.2-2.6.2-1.4 1.3-2.5 2.7-3.1L16 8.5Z" />`),
   chevron: base(`<path d="M9 6l6 6-6 6" />`),
-  // Clinic mark: two open hands with an ear centered between them.
-  // Deliberately mixes filled palms + stroked fingers/ear in one
-  // color (currentColor) — reads clearly even at favicon size, unlike
-  // an all-thin-stroke version of the same shape.
+  // Clinic mark: two simple cupped hands (in the style of the
+  // "palms up together" emoji) with an ear centered between them.
   handsEar: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <g stroke="none">
-      <ellipse cx="16" cy="50" rx="7" ry="6" fill="currentColor"/>
-      <ellipse cx="48" cy="50" rx="7" ry="6" fill="currentColor"/>
+    <g fill="currentColor" stroke="none">
+      <rect x="6" y="26" width="15" height="30" rx="7.5" transform="rotate(18 13.5 41)"/>
+      <ellipse cx="19" cy="49" rx="6" ry="4.5" transform="rotate(-12 19 49)"/>
+      <rect x="43" y="26" width="15" height="30" rx="7.5" transform="rotate(-18 50.5 41)"/>
+      <ellipse cx="45" cy="49" rx="6" ry="4.5" transform="rotate(12 45 49)"/>
     </g>
-    <g stroke-width="4.2">
-      <line x1="16" y1="45" x2="6" y2="36"/>
-      <line x1="17" y1="44" x2="10" y2="32"/>
-      <line x1="19" y1="43" x2="15" y2="29"/>
-      <line x1="21" y1="44" x2="20" y2="30"/>
-      <line x1="22" y1="47" x2="28" y2="42"/>
-      <line x1="48" y1="45" x2="58" y2="36"/>
-      <line x1="47" y1="44" x2="54" y2="32"/>
-      <line x1="45" y1="43" x2="49" y2="29"/>
-      <line x1="43" y1="44" x2="44" y2="30"/>
-      <line x1="42" y1="47" x2="36" y2="42"/>
-    </g>
-    <g transform="translate(32,24) scale(1.15) translate(-13,-12)" stroke-width="1.9">
+    <g transform="translate(32,26) scale(1.2) translate(-13,-12)" stroke-width="1.8">
       <path d="M9 16c-1.7-1.7-2.5-3.4-2.5-5.6C6.5 6.4 9.7 3 13.5 3S20 6.4 20 10.4c0 3-1.8 4.4-3.4 5.7-1.2 1-2.1 1.8-2.1 3.4A2.5 2.5 0 0 1 12 22c-1.8 0-2.8-1.2-3-2.6" />
       <path d="M13.5 7.5a3 3 0 0 1 3 3c0 1.5-1 2-1 3.3" />
     </g>

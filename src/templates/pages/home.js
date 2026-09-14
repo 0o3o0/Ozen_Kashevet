@@ -1,5 +1,5 @@
 const icons = require("../icons");
-const { waHref, telHref } = require("../utils");
+const { waHref, telHref, wazeHref, mapEmbedQuery } = require("../utils");
 const { heroWave } = require("../layout");
 
 const slug = "home";
@@ -60,10 +60,41 @@ function servicesList(config) {
 function trustBar(config) {
   return `
   <div class="hero__trust">
-    <span class="trust-item">${icons.check} קלינאי תקשורת מורשים</span>
-    <span class="trust-item">${icons.tympanometry} ציוד אודיולוגי קליני</span>
-    <span class="trust-item">${icons.accessibility} נגישות</span>
-    <span class="trust-item">${icons.document} תוצאות ודוח מסודר</span>
+    ${config.buzzwords.map((b) => `<span class="trust-item">${icons.check} ${b}</span>`).join("\n")}
+  </div>`;
+}
+
+function aboutAndLocation(config) {
+  const map = mapEmbedQuery(config);
+  return `
+  <div class="grid grid--2" style="align-items:center;">
+    <div>
+      <p class="eyebrow">${icons.ear} מי אנחנו</p>
+      <h2>מכון שמיעה חם ומקצועי בלב תל אביב</h2>
+      <p class="lede">${config.aboutBlurb}</p>
+      <div class="hero__ctas">
+        <a class="btn btn--primary" href="${waHref(config)}" target="_blank" rel="noopener" data-track="whatsapp_click" data-track-location="home_about">${icons.whatsapp} קביעת תור בוואטסאפ</a>
+      </div>
+      <!-- מיקום עתידי: כאן ייכנס ווידג'ט קביעת תור עצמאית (פיצ'ר בפיתוח) -->
+    </div>
+    <div>
+      <div class="map-frame">
+        ${
+          map.show
+            ? `<iframe title="מפת הגעה למכון" loading="lazy" src="${map.embedSrc}"></iframe>`
+            : `<div style="display:flex;align-items:center;justify-content:center;height:100%;padding:24px;text-align:center;color:var(--ink-faint);">המפה תוצג לאחר אימות הכתובת המדויקת</div>`
+        }
+      </div>
+      ${
+        map.isDemoPin
+          ? `<div style="padding-top:8px;font-size:.8rem;color:var(--ink-faint);">מיקום זמני להדגמה בלב תל אביב — יעודכן לכתובת המדויקת של המכון.</div>`
+          : ""
+      }
+      <div style="margin-top:14px;display:flex;flex-direction:column;gap:12px;">
+        <span style="display:flex;align-items:center;gap:8px;color:var(--ink-soft);">${icons.clock} שעות פתיחה: ${config.openingHoursDisplay}</span>
+        <a class="btn btn--gold btn--block" href="${wazeHref(config)}" target="_blank" rel="noopener" data-track="directions_click" data-track-location="home_waze">${icons.pin} נווט לכאן בוויז</a>
+      </div>
+    </div>
   </div>`;
 }
 
@@ -180,6 +211,12 @@ function render(config) {
         ${trustBar(config)}
       </div>
       ${heroWave()}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      ${aboutAndLocation(config)}
     </div>
   </section>
 

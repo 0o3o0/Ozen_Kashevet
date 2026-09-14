@@ -1,5 +1,5 @@
 const icons = require("../icons");
-const { waHref, telHref } = require("../utils");
+const { waHref, telHref, mapEmbedQuery } = require("../utils");
 
 const slug = "contact";
 const path = "/contact/";
@@ -8,21 +8,8 @@ const description =
   "פרטי יצירת קשר, כתובת, הגעה בתחבורה ציבורית, חניה ונגישות למכון אוזן קשבת בתל אביב.";
 const navLabel = "צור קשר";
 
-function isPlaceholder(v) {
-  return !v || /^\[.*\]$/.test(String(v).trim());
-}
-
 function render(config) {
-  const hasGeo = typeof config.geo.lat === "number" && typeof config.geo.lng === "number";
-  const addressKnown = !isPlaceholder(config.address.full);
-  const showMap = hasGeo || addressKnown;
-  // Prefer exact coordinates once known; fall back to a text-address
-  // search embed, which is what will happen once a real street
-  // address is confirmed but before precise geo is measured.
-  const mapQuery = hasGeo
-    ? encodeURIComponent(`${config.geo.lat},${config.geo.lng}`)
-    : encodeURIComponent(config.address.full + " " + config.address.city);
-  const mapZoom = hasGeo ? "15" : "16";
+  const map = mapEmbedQuery(config);
 
   return `
   <section class="section" style="padding-top:24px;">
@@ -55,17 +42,17 @@ function render(config) {
       <div>
         <div class="map-frame">
           ${
-            showMap
-              ? `<iframe title="מפת הגעה למכון" loading="lazy" src="https://www.google.com/maps?q=${mapQuery}&z=${mapZoom}&output=embed"></iframe>`
+            map.show
+              ? `<iframe title="מפת הגעה למכון" loading="lazy" src="${map.embedSrc}"></iframe>`
               : `<div style="display:flex;align-items:center;justify-content:center;height:100%;padding:24px;text-align:center;color:var(--ink-faint);">המפה תוצג לאחר אימות הכתובת המדויקת</div>`
           }
         </div>
         ${
-          hasGeo && !addressKnown
+          map.isDemoPin
             ? `<div style="padding-top:8px;font-size:.8rem;color:var(--ink-faint);">מיקום זמני להדגמה בלב תל אביב — יעודכן לכתובת המדויקת של המכון.</div>`
             : ""
         }
-        <a class="btn btn--ghost btn--sm" style="margin-top:12px;" href="https://www.google.com/maps/search/?api=1&query=${mapQuery}" target="_blank" rel="noopener" data-track="directions_click" data-track-location="contact_page">${icons.pin} ניווט בגוגל מפות</a>
+        <a class="btn btn--ghost btn--sm" style="margin-top:12px;" href="${map.directionsHref}" target="_blank" rel="noopener" data-track="directions_click" data-track-location="contact_page">${icons.pin} ניווט בגוגל מפות</a>
       </div>
     </div>
   </section>

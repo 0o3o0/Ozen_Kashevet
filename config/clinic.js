@@ -35,6 +35,12 @@ module.exports = {
   description:
     "מכון בדיקות שמיעה בתל אביב למבוגרים ולילדים מגיל 5 — אודיומטריה וטימפנומטריה על ידי קלינאי/ות תקשורת מוסמכים.",
 
+  // Short homepage "about us" paragraph and trust-badge chips. Plain
+  // text/short phrases — edit freely, no HTML needed.
+  aboutBlurb:
+    "אוזן קשבת הוא מכון שמיעה חם ומקצועי בלב תל אביב. אנחנו מאמינים שבדיקת שמיעה יכולה וצריכה להיות חוויה נעימה: הצוות שלנו מקדיש לכם זמן, מסביר כל שלב לאורך הדרך, ודואג שתצאו עם תמונה ברורה של מצב השמיעה שלכם — לא רק עם דוח.",
+  buzzwords: ["אבחון מדויק", "ציוד אודיולוגי מתקדם", "יחס אישי וסבלני", "בלי המתנות מיותרות", "תוצאות באותו ביקור"],
+
   // ---- Contact -------------------------------------------------
   phoneDisplay: "[PHONE]", // e.g. 08-1234567 — shown to visitors
   phoneHref: "[PHONE]", // e.g. +97281234567 — used inside tel: links, digits + leading +
@@ -86,17 +92,13 @@ module.exports = {
   },
 
   // ---- Hours -------------------------------------------------
-  // Free-text fallback shown until real hours are confirmed.
-  openingHoursDisplay: "[OPENING_HOURS]",
-  // Structured hours for JSON-LD. Leave as null until confirmed —
-  // when you fill this in, openingHoursSpecification will be
-  // added automatically. Example shape left in place below.
-  openingHoursStructured: null,
-  /* Example once confirmed:
+  // Free-text fallback shown to visitors.
+  openingHoursDisplay: "א'–ה', 10:00–17:00",
+  // Structured hours, feeds the JSON-LD openingHoursSpecification
+  // automatically (see build.js).
   openingHoursStructured: [
-    { days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"], opens: "09:00", closes: "17:00" },
+    { days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"], opens: "10:00", closes: "17:00" },
   ],
-  */
 
   // ---- Regulatory / insurance -------------------------------------------------
   licenseDetails: "[LICENSE_DETAILS]", // Ministry of Health institute license number / details

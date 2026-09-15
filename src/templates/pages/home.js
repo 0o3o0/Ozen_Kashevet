@@ -271,7 +271,7 @@ function render(config) {
         <p class="lede">בדיקות שמיעה למבוגרים ולילדים מגיל 5, כולל אודיומטריה וטימפנומטריה.</p>
         <div class="hero__ctas">
           <a class="btn btn--primary" href="${waHref(config)}" target="_blank" rel="noopener" data-track="whatsapp_click" data-track-location="hero">${icons.whatsapp} קביעת תור בוואטסאפ</a>
-          <a class="btn btn--ghost" href="${telHref(config)}" data-track="phone_click" data-track-location="hero">${icons.phone} התקשרו עכשיו</a>
+          <a class="btn btn--ghost" href="#booking" data-track-location="hero_self_booking">${icons.document} קבעו תור בעצמכם</a>
         </div>
         ${trustBar(config)}
       </div>
@@ -285,7 +285,7 @@ function render(config) {
     </div>
   </section>
 
-  <section class="section section--alt">
+  <section class="section section--alt" id="booking">
     <div class="container">
       <p class="eyebrow">${icons.document} קביעת תור</p>
       <h2 class="text-center" style="max-width:600px;margin-inline:auto;">קבעו תור עצמאית, ישירות באתר</h2>

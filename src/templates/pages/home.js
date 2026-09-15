@@ -317,9 +317,8 @@ function render(config) {
 
   <section class="section section--alt">
     <div class="container">
-      <p class="eyebrow">שאלות נפוצות</p>
       <details class="faq-section">
-        <summary class="faq-section__summary"><h2 class="mt-0" style="margin-bottom:0;">שאלות ותשובות</h2></summary>
+        <summary class="faq-section__summary"><h2 class="mt-0" style="margin-bottom:0;">שאלות נפוצות ותשובות</h2></summary>
         <div class="faq-section__body">
           ${faqItems(config)}
         </div>

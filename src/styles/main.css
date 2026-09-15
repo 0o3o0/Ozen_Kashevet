@@ -112,7 +112,7 @@ p { margin: 0 0 1em; color: var(--ink-soft); max-width: 62ch; }
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
-.section { padding-block: clamp(32px, 4.5vw, 64px); }
+.section { padding-block: clamp(20px, 2.5vw, 40px); }
 .section--alt { background: var(--bg-alt); }
 .section--indigo { background: var(--indigo); color: #fff; }
 .section--indigo h2, .section--indigo h3 { color: #fff; }
@@ -225,7 +225,7 @@ p { margin: 0 0 1em; color: var(--ink-soft); max-width: 62ch; }
 .hero {
   position: relative;
   overflow: hidden;
-  padding-block: clamp(32px, 5vw, 72px);
+  padding-block: clamp(24px, 3.5vw, 48px);
   background-image:
     linear-gradient(var(--bg) 0%, var(--bg) 100%),
     repeating-linear-gradient(0deg, var(--line) 0 1px, transparent 1px 44px);
@@ -369,14 +369,15 @@ p { margin: 0 0 1em; color: var(--ink-soft); max-width: 62ch; }
   list-style: none;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  justify-content: flex-start;
+  gap: 14px;
 }
 .faq-section > summary.faq-section__summary::-webkit-details-marker { display: none; }
+.faq-section > summary.faq-section__summary::marker { content: ""; display: none; }
 .faq-section > summary.faq-section__summary::after {
   content: "+";
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 2.6rem;
   line-height: 1;
   color: var(--indigo);
   flex: none;

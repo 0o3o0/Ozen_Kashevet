@@ -211,54 +211,6 @@ function aboutAndLocation(config) {
   </div>`;
 }
 
-function howItWorks() {
-  const steps = [
-    { n: 1, t: "קובעים תור", d: "בוואטסאפ או בטלפון, בזמן שנוח לכם." },
-    { n: 2, t: "מגיעים למכון", d: `${"[ADDRESS]"} בתל אביב, נגיש ופשוט להגעה.` },
-    { n: 3, t: "מבצעים את הבדיקה", d: "קלינאי/ת תקשורת מבצע/ת את הבדיקה בציוד אודיולוגי קליני." },
-    { n: 4, t: "מקבלים תוצאות והסבר", d: "הסבר ברור על הממצאים, בתום הבדיקה." },
-  ];
-  return steps
-    .map(
-      (s) => `
-    <div class="step">
-      <div class="step__num">${s.n}</div>
-      <div>
-        <h3 class="mt-0">${s.t}</h3>
-        <p>${s.d}</p>
-      </div>
-    </div>`
-    )
-    .join("\n");
-}
-
-function childrenSection() {
-  return `
-  <div class="grid grid--2" style="align-items:center;">
-    <div>
-      <p class="eyebrow">${icons.child} להורים</p>
-      <h2>צריכים בדיקת שמיעה לילד?</h2>
-      <p class="lede">בדיקות שמיעה לילדים מגיל 5, בסביבה נעימה ורגועה המותאמת לילדים.</p>
-      <ul>
-        <li>אודיומטריה מותאמת לגיל הילד</li>
-        <li>טימפנומטריה, כאשר יש לכך צורך קליני</li>
-        <li>תוצאות בכתב עם הסבר להורים</li>
-      </ul>
-      <p>תהליכי ועדות זכאות ואפיון שונים זה מזה, ולא כל ועדה דורשת את אותם המסמכים — מומלץ לבדוק מראש מול הגורם הרלוונטי אילו מסמכים נדרשים במקרה הספציפי.</p>
-      <a class="btn btn--primary" href="/children-hearing-test/">בדיקת שמיעה לילדים</a>
-    </div>
-    <div class="card">
-      <h3 class="mt-0">מה כוללת הבדיקה?</h3>
-      <ul>
-        <li>שיחת היכרות קצרה עם הילד/ה וההורים</li>
-        <li>בדיקת אודיומטריה</li>
-        <li>טימפנומטריה במידת הצורך</li>
-        <li>הסבר על התוצאות בסיום הבדיקה</li>
-      </ul>
-    </div>
-  </div>`;
-}
-
 function faqItems(config) {
   const items = [
     {
@@ -349,22 +301,6 @@ function render(config) {
       <div class="grid grid--4" style="margin-top:28px;">
         ${servicesList(config)}
       </div>
-    </div>
-  </section>
-
-  <section class="section section--alt">
-    <div class="container">
-      <p class="eyebrow">${icons.clock} איך זה עובד</p>
-      <h2>מהקביעה ועד לתוצאות</h2>
-      <div class="grid grid--2" style="margin-top:24px;">
-        ${howItWorks()}
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      ${childrenSection()}
     </div>
   </section>
 

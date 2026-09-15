@@ -21,9 +21,7 @@ function bookingSection(config) {
   const openDays = (config.openingHoursStructured || []).flatMap((spec) => spec.days.map((d) => dayIndex[d]));
 
   return `
-  <div class="card" style="max-width:760px;margin-inline:auto;">
-    <h3 class="mt-0">קביעת תור מהירה</h3>
-    <p style="margin-bottom:20px;">מלאו פרטים ובחרו תאריך ושעה מועדפים — הבקשה תישלח אליכם ישירות לוואטסאפ או למייל, לפי מה שנוח לכם.</p>
+  <div class="card booking-form" style="max-width:760px;margin-inline:auto;padding:22px;">
     <form id="booking-form-live" data-track-form="home_booking">
       <div class="grid grid--2">
         <div class="form-field">
@@ -55,7 +53,7 @@ function bookingSection(config) {
         <div class="form-field">
           <label for="bk-date">תאריך מועדף</label>
           <input id="bk-date" name="date" type="date" required />
-          <span id="bk-date-warning" style="display:none;color:#a33;font-size:.85rem;">המכון סגור בתאריך שנבחר (${config.openingHoursDisplay}). אפשר לשלוח בכל זאת ונתאם ידנית.</span>
+          <span id="bk-date-warning" style="display:none;color:#a33;font-size:.8rem;">המכון סגור בתאריך שנבחר (${config.openingHoursDisplay}). אפשר לשלוח בכל זאת ונתאם ידנית.</span>
         </div>
         <div class="form-field">
           <label for="bk-time">שעה מועדפת</label>
@@ -68,11 +66,11 @@ function bookingSection(config) {
         <label for="bk-notes">הערות (לא חובה)</label>
         <textarea id="bk-notes" name="notes"></textarea>
       </div>
-      <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:12px;">
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:4px;">
         <button class="btn btn--primary" type="submit" data-channel="whatsapp">${icons.whatsapp} שליחת הבקשה בוואטסאפ</button>
         <button type="submit" data-channel="email" style="background:none;border:none;color:var(--indigo-dark);font-weight:600;cursor:pointer;text-decoration:underline;padding:8px;">שליחה במייל במקום</button>
       </div>
-      <p style="font-size:.8rem;color:var(--ink-faint);margin-top:14px;margin-bottom:0;">
+      <p style="font-size:.78rem;color:var(--ink-faint);margin-top:10px;margin-bottom:0;">
         לתשומת לב הצוות הטכני: הבקשה נשלחת כרגע ידנית (וואטסאפ/מייל) ואינה יוצרת הזמנה במערכת יומן. כשיחובר מנוע קביעת תורים אמיתי, ההגשה כאן צריכה לעבור ל-API שלו כדי שגם תישלח הודעת אישור אוטומטית ללקוח.
       </p>
     </form>
@@ -288,7 +286,8 @@ function render(config) {
   <section class="section section--alt" id="booking">
     <div class="container">
       <p class="eyebrow">${icons.document} קביעת תור</p>
-      <h2 class="text-center" style="max-width:600px;margin-inline:auto;">קבעו תור עצמאית, ישירות באתר</h2>
+      <h2 class="text-center" style="max-width:600px;margin-inline:auto;margin-bottom:.3em;">קבעו תור עצמאית, ישירות באתר</h2>
+      <p class="text-center" style="max-width:520px;margin-inline:auto;">הבקשה תישלח אליכם לוואטסאפ או למייל, לפי בחירתכם.</p>
       ${bookingSection(config)}
     </div>
   </section>

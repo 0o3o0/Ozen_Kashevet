@@ -432,6 +432,12 @@ p { margin: 0 0 1em; color: var(--ink-soft); max-width: 62ch; }
 }
 .form-field textarea { resize: vertical; min-height: 90px; }
 
+/* Tighter variant used by the homepage self-booking form */
+.booking-form .grid { gap: 12px; }
+.booking-form .form-field { margin-bottom: 10px; }
+.booking-form .form-field:last-of-type { margin-bottom: 0; }
+.booking-form textarea { min-height: 60px; }
+
 /* ==========================================================
    Footer
    ========================================================== */
